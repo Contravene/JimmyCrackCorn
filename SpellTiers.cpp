@@ -15,7 +15,7 @@ void displayMenu() {
 	cout << "1) Call to Arms" << endl;
 	cout << "2) Spiritual Surge" << endl;
 	cout << "3) Vanilla Alignment(Holy Light, Blood Frenzy)" << endl;
-	cout << "4) Neutral Alignment(Gen Grinder)" << endl;
+	cout << "4) Neutral Alignment(Gem Grinder)" << endl;
 	cout << "5) Vanilla Faction(Fairy Chanting, Moon Blessing, God's Hand, Goblin's Greed, Night Time, Hellfire Blast)" << endl;
 	cout << "6) Neutral Faction(Lightning Strike, Grand Balance, Brainwave)" << endl;
 	cout << "7) Prestige Faction(Diamond Pickaxe, Combo Strike)" << endl;
@@ -97,19 +97,18 @@ int main() {
 			break;
 		}
 
-		// Calculate time required in seconds
+		// Calculate time required in seconds, then convert to Days, Hours, Minutes and Seconds
 		timeResult = (43200 * (pow((n + 1), 2) - (n + 1)) * pow(0.98, (r - (n + 1)) - 42));
+		days = ((timeResult / 60) / 60) / 24;
+		hours = ((timeResult / 60) / 60) % 24;
+		minutes = (timeResult / 60) % 60;
+		seconds = timeResult % 60;
 
 		// Calculate diamond coin cost
 		coinResult = pow(xCoin, (1 + 0.25 * (n - 1)));
 
 		// Calculate faction coin cost
-		factionResult = pow(xFaction, (1 + 0.25 * (n - 1)));
-
-		days = ((timeResult / 60) / 60) / 24;
-		hours = ((timeResult / 60) / 60) % 24;
-		minutes = (timeResult / 60) % 60;
-		seconds = timeResult % 60;
+		factionResult = pow(xFaction, (1 + 0.15 * (n - 1)));
 
 		// Output the results
 		cout << "\nTime Required: " << days << " days, " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds" << endl;
